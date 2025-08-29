@@ -2,7 +2,6 @@
 # Automatic neovim (console based text editor/ide) setup by Max
 
 # Change to home directory
-sudo apt update
 cd $HOME
 
 if [ -e "/usr/bin/git" ]; then
