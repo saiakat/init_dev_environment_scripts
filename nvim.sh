@@ -4,12 +4,6 @@
 # Change to home directory
 cd $HOME
 
-if [ -e "/usr/bin/git" ]; then
-  echo "git alreay installed"
-else
-  sudo apt install git
-fi
-
 # Check if neovim is already installed and if not download and unpack it
 if [ -e "$HOME/nvim-linux-x86_64" ]; then
   echo "Neovim is already installed."
@@ -24,7 +18,7 @@ if [ -e "$HOME/lua-5.4.8" ]; then
   echo "lua is already installed."
 else
   curl -L -R -O https://www.lua.org/ftp/lua-5.4.8.tar.gz
-  tar zxf lua-5.4.8.tar.gz
+  sudo tar zxf lua-5.4.8.tar.gz
   cd lua-5.4.8
   make all test
   cd $HOME
@@ -37,7 +31,7 @@ if [ -e "$HOME/ripgrep-14.1.1-x86_64-unknown-linux-musl" ]; then
   echo "ripgrep is already installed."
 else
   curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.1/ripgrep-14.1.1-x86_64-unknown-linux-musl.tar.gz
-  tar zxf ripgrep-14.1.1-x86_64-unknown-linux-musl.tar.gz
+  sudo tar zxf ripgrep-14.1.1-x86_64-unknown-linux-musl.tar.gz
 fi
 
 # Check if my (max) git repository for the neovim configuration is downloaded and if not clones it into the .config folder
@@ -79,4 +73,4 @@ else
   sudo apt install xclip
 fi
 
-source ~/.bashrc
+export PATH="$PATH:$HOME/nvim-linux-x86_64/bin:$HOME/lua-5.4.8/src:$HOME/ripgrep-14.1.1-x86_64-unknown-linux-musl"
